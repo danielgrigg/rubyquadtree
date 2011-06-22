@@ -1,0 +1,24 @@
+Contained within is a lightweight quadtree implementation.  It was originally 
+intended io improve performance with a ruby-gnome app but also works standalone.
+
+Usage:
+
+QuadTreeAccelerator is the most interesting class.  Given a set of points,
+it'll partition the points in a quad-tree,ie,
+
+qball = QuadTreeAccelerator.new(myObjectArray)
+
+Atm, only point-like objects are supported :/  So the objects must respond 
+to x, y, z and id messages (see UniquePoint3). For example, in IRB:
+
+require 'quad_tree_accelerator'
+ps = (1..100).map{|x| UniquePoint3.new(rand(1000),rand(1000),rand(1000))};nil
+qball = QuadTreeAccelerator.new(ps);nil
+puts qball
+
+The accelerator includes methods for manipulating the tree contents,
+iterating over points/nodes and queries.
+
+Tests are included and run via run_tests.rb
+
+daniel.g
